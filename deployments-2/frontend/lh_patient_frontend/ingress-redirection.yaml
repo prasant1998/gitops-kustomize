@@ -1,0 +1,48 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      rewrite / https://staging-patient.linear.health/dashboard/assessment-forms$uri permanent;
+    kubernetes.io/ingress.class: nginx
+  name: ingresslhpatientredirect01
+spec:
+  rules:
+    - host: go.linear.health
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      rewrite / https://staging-patient.linear.health/dashboard/assessment-forms$uri permanent;
+    kubernetes.io/ingress.class: nginx
+  name: ingresslhpatientredirect02
+spec:
+  rules:
+    - host: assess.linear.health
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      rewrite / https://staging-patient.linear.health/dashboard/message-thread$uri permanent;
+    kubernetes.io/ingress.class: nginx
+  name: ingresslhpatientredirect03
+spec:
+  rules:
+    - host: msg.linear.health
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      rewrite / https://staging-patient.linear.health/eforms/welcome$uri permanent;
+    kubernetes.io/ingress.class: nginx
+  name: ingresslhpatientredirect04
+spec:
+  rules:
+    - host: form.linear.health
+---

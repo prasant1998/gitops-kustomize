@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploylhadminfrontend
+  namespace: default
+  labels:
+    app: deploylhadminfrontend
+spec:
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: deploylhadminfrontend
+  minReadySeconds: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 25%
+  template:
+    metadata:
+      labels:
+        app: deploylhadminfrontend
+    spec:
+      containers:
+      - name: lhadminfrontend
+        image: 052758603943.dkr.ecr.us-east-2.amazonaws.com/lh-admin-frontend-stage
+        envFrom:
+            - configMapRef:
+                name: lh-admin-env-cm
+            - secretRef:
+                name: lh-admin-env-sec
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            cpu: 150m
+          requests:
+            cpu: 100m
+        readinessProbe:
+          exec:
+            command:
+            - cat
+            - "/usr/share/nginx/lh-admin-frontend/index.html"
+          initialDelaySeconds: 30
+          periodSeconds: 5
+          successThreshold: 1
+        livenessProbe:
+          exec:
+            command:
+            - cat
+            - "/usr/share/nginx/lh-admin-frontend/index.html"
+          failureThreshold: 3
+          periodSeconds: 30
+          initialDelaySeconds: 90

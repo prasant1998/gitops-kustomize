@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploylhpatientfrontend
+  labels:
+    app: deploylhpatientfrontend
+spec:
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: deploylhpatientfrontend
+  minReadySeconds: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 25%
+  template:
+    metadata:
+      labels:
+        app: deploylhpatientfrontend
+    spec:
+      containers:
+        - name: lhpatientfrontend
+          image: 052758603943.dkr.ecr.us-east-2.amazonaws.com/lh_patient_frontend-stage
+          envFrom:
+            - configMapRef:
+                name: lh-patient-env-cm
+            - secretRef:
+                name: lh-patient-env-sec
+          ports:
+            - containerPort: 80
+              name: http-patient
+          resources:
+            requests:
+              cpu: "500m"
+              memory: "512Mi"
+            limits:
+              cpu: "1020m"
+              memory: "4096Mi"
+          readinessProbe:
+           exec:
+            command:
+            - cat
+            - "/usr/share/nginx/lh_patient_frontend/index.html"
+          initialDelaySeconds: 30
+          periodSeconds: 5
+          successThreshold: 1
+          livenessProbe:
+           exec:
+              command:
+                - cat
+                - "/usr/share/nginx/lh_patient_frontend/index.html"
+              failureThreshold: 3
+              periodSeconds: 30
+              initialDelaySeconds: 90

@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+
+kind: Application
+metadata:
+  name: lh-grafana-stage
+  namespace: argocd
+spec:
+  project: linearhealth-stage
+  source:
+    repoURL: 'git@github.com:linear-health/Gitops.git'
+    path: deployments/monitoring/grafana
+    targetRevision: deploy-stage
+    directory:
+      recurse: false
+      jsonnet: {}
+  destination:
+    namespace: monitoring
+    name: linearhealth-eks-stage
+  syncPolicy:   
+    syncOptions:
+      - CreateNamespace=true
