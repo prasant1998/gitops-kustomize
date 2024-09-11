@@ -1,12 +1,12 @@
 kind: HorizontalPodAutoscaler
 metadata:
-  name: ashpalhpatientfrontend-develop
+  name: ashpapatientfrontend-develop
   namespace: develop
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: deploylhpatientfrontend-develop
+    name: deploypatientfrontend-develop
   minReplicas: 2
   maxReplicas: 6
   targetCPUUtilizationPercentage: 60

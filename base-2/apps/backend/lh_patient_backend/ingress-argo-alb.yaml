@@ -1,20 +1,20 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingresslhpracticeargo
+  name: ingresspracticeargo
   namespace: default
   annotations:
     kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
-    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-2:052758603943:certificate/dc441614-f8ee-460f-abdf-abf5c93ae1f3
+    alb.ingress.kubernetes.io/certificate-arn: certificate_arn
     #alb.ingress.kubernetes.io/backend-protocol-version: HTTP2
     alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/group.name: ingresslinearhealth
+    alb.ingress.kubernetes.io/group.name: ingress
     alb.ingress.kubernetes.io/ssl-redirect: '443'
     alb.ingress.kubernetes.io/backend-protocol: HTTPS
     alb.ingress.kubernetes.io/healthcheck-protocol: HTTP
 
-    alb.ingress.kubernetes.io/target-node-labels: Name=lh-ng
+    alb.ingress.kubernetes.io/target-node-labels: Name=nodegroup
     alb.ingress.kubernetes.io/healthcheck-path: /login
     alb.ingress.kubernetes.io/success-codes: '200,307'
     alb.ingress.kubernetes.io/conditions.argocd-server: >

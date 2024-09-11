@@ -5,5 +5,5 @@ resources:
   - service.yaml
 
 commonLabels:
-  app: deploylhadmin
+  app: deployadmin
   

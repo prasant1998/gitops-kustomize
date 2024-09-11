@@ -1,12 +1,12 @@
 kind: HorizontalPodAutoscaler
 metadata:
-  name: ashpalhstafffrontend-develop
+  name: ashpastafffrontend-develop
   namespace: develop
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: deploylhstafffrontend-develop
+    name: deploystafffrontend-develop
   minReplicas: 2
   maxReplicas: 6
   targetCPUUtilizationPercentage: 60

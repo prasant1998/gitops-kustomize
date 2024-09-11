@@ -5,4 +5,4 @@ resources:
   - service.yaml
 
 commonLabels:
-  app: deploylhadminfrontend
+  app: deployadminfrontend

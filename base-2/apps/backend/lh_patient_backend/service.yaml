@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: servicelhpatientbackend
+  name: servicepatientbackend
 spec:
   selector:
-    app: deploylhpatientbackend
+    app: deploypatientbackend
   type: NodePort
   ports:
   - name: http

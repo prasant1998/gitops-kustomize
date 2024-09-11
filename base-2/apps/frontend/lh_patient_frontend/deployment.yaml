@@ -1,14 +1,14 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: deploylhpatientfrontend
+  name: deploypatientfrontend
   labels:
-    app: deploylhpatientfrontend
+    app: deploypatientfrontend
 spec:
   revisionHistoryLimit: 3
   selector:
     matchLabels:
-      app: deploylhpatientfrontend
+      app: deploypatientfrontend
   minReadySeconds: 5
   strategy:
     type: RollingUpdate
@@ -18,16 +18,16 @@ spec:
   template:
     metadata:
       labels:
-        app: deploylhpatientfrontend
+        app: deploypatientfrontend
     spec:
       containers:
-        - name: lhpatientfrontend
-          image: 052758603943.dkr.ecr.us-east-2.amazonaws.com/lh_patient_frontend-stage
+        - name: patientfrontend
+          image: image_url/patient_frontend-stage
           envFrom:
             - configMapRef:
-                name: lh-patient-env-cm
+                name: patient-env-cm
             - secretRef:
-                name: lh-patient-env-sec
+                name: patient-env-sec
           ports:
             - containerPort: 80
               name: http-patient
@@ -42,7 +42,7 @@ spec:
            exec:
             command:
             - cat
-            - "/usr/share/nginx/lh_patient_frontend/index.html"
+            - "/usr/share/nginx/_patient_frontend/index.html"
           initialDelaySeconds: 30
           periodSeconds: 5
           successThreshold: 1
@@ -50,7 +50,7 @@ spec:
            exec:
               command:
                 - cat
-                - "/usr/share/nginx/lh_patient_frontend/index.html"
+                - "/usr/share/nginx/_patient_frontend/index.html"
               failureThreshold: 3
               periodSeconds: 30
               initialDelaySeconds: 90

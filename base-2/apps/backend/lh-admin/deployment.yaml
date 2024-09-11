@@ -1,15 +1,15 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: deploylhadmin
+  name: deployadmin
   labels:
-    app: deploylhadmin
+    app: deployadmin
 spec:
   revisionHistoryLimit: 3
   #replicas: 2
   selector:
     matchLabels:
-      app: deploylhadmin
+      app: deployadmin
   minReadySeconds: 5
   strategy:
     type: RollingUpdate
@@ -19,16 +19,16 @@ spec:
   template:
     metadata:
       labels:
-        app: deploylhadmin
+        app: deployadmin
     spec:
       containers:
-      - name: lhadmin
-        image: 052758603943.dkr.ecr.us-east-2.amazonaws.com/lh-admin-stage
+      - name: admin
+        image: image_url/admin-stage
         envFrom:
             - configMapRef:
-                name: lh-admin-env-cm
+                name: -admin-env-cm
             - secretRef:
-                name: lh-admin-env-sec
+                name: -admin-env-sec
         ports:
         - containerPort: 80
         resources:

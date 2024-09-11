@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: servicelhadminfrontend
+  name: serviceadminfrontend
 spec:
   selector:
-    app: deploylhadminfrontend
+    app: deployadminfrontend
   type: NodePort
   ports:
   - name: http

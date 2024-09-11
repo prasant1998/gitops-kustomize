@@ -1,15 +1,15 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: deploylhstafffrontend
+  name: deploystafffrontend
   namespace: default
   labels:
-    app: deploylhstafffrontend
+    app: deploystafffrontend
 spec:
   revisionHistoryLimit: 3
   selector:
     matchLabels:
-      app: deploylhstafffrontend
+      app: deploystafffrontend
   minReadySeconds: 5
   strategy:
     type: RollingUpdate
@@ -19,16 +19,16 @@ spec:
   template:
     metadata:
       labels:
-        app: deploylhstafffrontend
+        app: deploystafffrontend
     spec:
       containers:
-      - name: lhstafffrontend
-        image: 052758603943.dkr.ecr.us-east-2.amazonaws.com/lh_staff_frontend-stage
+      - name: stafffrontend
+        image: image_url/staff_frontend-stage
         envFrom:
             - configMapRef:
-                name: lh-staff-env-cm
+                name: staff-env-cm
             - secretRef:
-                name: lh-staff-env-sec
+                name: staff-env-sec
         ports:
         - containerPort: 80
           name: http-staff
@@ -41,7 +41,7 @@ spec:
           exec:
             command:
             - cat
-            - "/usr/share/nginx/lh_staff_frontend/index.html"
+            - "/usr/share/nginx/_staff_frontend/index.html"
           initialDelaySeconds: 30
           periodSeconds: 5
           successThreshold: 1
@@ -49,7 +49,7 @@ spec:
           exec:
             command:
             - cat
-            - "/usr/share/nginx/lh_staff_frontend/index.html"
+            - "/usr/share/nginx/_staff_frontend/index.html"
           failureThreshold: 3
           periodSeconds: 30
           initialDelaySeconds: 90
