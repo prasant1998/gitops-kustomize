@@ -9,7 +9,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: grafana-linear-staging.linear.health
+  - host: grafana.com
     http:
       paths:
       - pathType: Prefix

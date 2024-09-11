@@ -1,15 +1,15 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-namespace: stage-lh-patient-backend
+namespace: stage-patient-backend
 
 commonLabels:
-  app: deploylhpatientfrontend
+  app: deploypatientfrontend
 
 resources:
-  - lh-patient-backend-cm.yaml
-  - lh-patient-backend-sec.yaml
-  - ../../../base/apps/backend/lh_patient_backend
+  - patient-backend-cm.yaml
+  - patient-backend-sec.yaml
+  - ../../../base/apps/backend/patient_backend
   - hpa.yaml
   - ingress-api.yaml
 
@@ -20,23 +20,22 @@ patchesJson6902:
 - target:
     version: v1
     kind: Deployment
-    name: deploylhpatientbackend
+    name: deploypatientbackend
   patch: |-
     - op: replace
       path: /spec/template/spec/containers/0/name
-      value: deploylhpatientbackend
+      value: deploypatientbackend
 - target:
     version: v1
     kind: Ingress
-    name: ingresslhpatientbackend
+    name: ingresspatientbackend
   patch: |-
     - op: replace
       path: /spec/rules/0/host
-      value: staging-api.linear.health
-    - op: replace
+      value: staging-api.com
       path: /spec/rules/0/http/paths/0/backend/service/name
       value: servicelhpatientbackend
 
 images:
-- name: 052758603943.dkr.ecr.us-east-2.amazonaws.com/lh_patient_backend-stage
+- name: image_url/patient_backend-stage
   newTag: '1'

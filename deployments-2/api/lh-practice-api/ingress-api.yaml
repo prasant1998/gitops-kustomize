@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingresslhpracticeapi
+  name: ingresspracticeapi
   annotations:
     kubernetes.io/ingress.class: nginx
     #nginx.ingress.kubernetes.io/http2-push-preload: "true"
@@ -17,6 +17,6 @@ spec:
            pathType: Prefix
            backend:
              service:
-              name: servicelhpracticeapi
+              name: servicepracticeapi
               port:
                 number: 80

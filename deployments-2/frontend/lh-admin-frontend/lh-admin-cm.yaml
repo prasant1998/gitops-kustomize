@@ -4,6 +4,3 @@ metadata:
   name: lh-admin-env-cm
 data:
   NEXT_PUBLIC_JWT_EXPIRATION: 5m
-  NEXT_PUBLIC_BASE_URL: https://staging-api.linear.health/admin-api/
-  NEXT_EFORM_BASE_URL: https://staging-api.linear.health/eforms-api/
-  NEXT_IMAGE_BASE_URL: https://lh-img.s3.us-east-2.amazonaws.com/

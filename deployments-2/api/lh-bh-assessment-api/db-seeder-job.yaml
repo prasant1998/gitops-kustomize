@@ -11,16 +11,9 @@ spec:
   template:
     spec:
       containers:
-      - name: lhbhassessmentapi
-        image: 052758603943.dkr.ecr.us-east-2.amazonaws.com/lh-bh-assessment-api-stage
+      - name: bhassessmentapi
+        image: image_url/lbh-assessment-api-stage
         command: ["npx", "sequelize-cli", "db:seed:all"]
-        envFrom:
-        - secretRef:
-           name: ${SECRET}
-        volumeMounts:
-        - mountPath: /lh-practice-api/database.sequelize-config.json
-          name: sequelize-config
-          subPath: database.sequelize-config.json
 
       volumes:
       - name: sequelize-config

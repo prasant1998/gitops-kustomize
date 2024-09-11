@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: jobdbseedlhadmin
+  name: jobdbseedadmin
   annotations:
     argocd.argoproj.io/hook: PreSync
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
@@ -11,21 +11,9 @@ spec:
   template:
     spec:
       containers:
-      - name: lhadmin
+      - name: admin
         image: default
         command: ["npx", "sequelize-cli", "db:seed:all"]
-        envFrom:
-        - secretRef:
-           name: ${SECRET}
-        volumeMounts:
-        - mountPath: /lh-admin/database.sequelize-config.json
-          name: sequelize-config
-          subPath: database.sequelize-config.json
-
-      volumes:
-      - name: sequelize-config
-        secret:
-          secretName: sequelize-config
 
       restartPolicy: Never
   backoffLimit: 1

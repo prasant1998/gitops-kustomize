@@ -1,10 +1,10 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: lh-patient-frontend-stage
+  name: patient-frontend-stage
   namespace: argocd
 spec:
-  project: linearhealth-stage
+  project: test-stage
   source:
     repoURL: 'git@github.com:linear-health/Gitops.git'
     path: deployments/frontend/lh_patient_frontend
@@ -13,8 +13,8 @@ spec:
       recurse: false
       jsonnet: {}
   destination:
-    namespace: stage-lh-patient-frontend
-    name: linearhealth-eks-stage
+    namespace: stage-patient-frontend
+    name: test-eks-stage
   syncPolicy:   
     syncOptions:
       - CreateNamespace=true

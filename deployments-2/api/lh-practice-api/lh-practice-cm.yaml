@@ -1,29 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: lh-practice-env-cm
+  name: practice-env-cm
 data:
   API_PORT: '3000'
-  AWS_REGION: us-east-2
-  AWS_S3_BUCKET_NAME: lh-img  
-  AWS_S3_CLOUDFRONT_URL: https://lh-img.s3.us-east-2.amazonaws.com/
-  BEARER: Bearer
-  DB_DIALECT: postgres
-  DB_HOST: lh-stage-rds.casu9wp7u42p.us-east-2.rds.amazonaws.com
-  DB_NAME_STAGING: lh-stage
-  DB_NAME_DEVELOPMENT: lh-dev
-  DB_NAME_PRODUCTION: production_database_name
-  DB_NAME_TEST: test_database_name
-  DB_PORT: '5432'
-  EMAIL_HOST: smtp.gmail.com
-  EMAIL_PORT: '465'
-  FRONTEND_URL: https://staging-staff.linear.health/
-  NODE_ENV: staging
-  PATIENT_FRONTEND_URL: https://staging-patient.linear.health/
-  QUEUE_ENV: STAGE
-  TOKEN_EXPIRATION: 24h
-  PATIENT_API_URL: https://staging-api.linear.health/patient-api/
-  NEXT_PUBLIC_JWT_EXPIRATION: 5m
-  NEXT_PUBLIC_BASE_URL: https://staging-api.linear.health/admin-api
-  NEXT_IMAGE_BASE_URL: https://lh-img.s3.us-east-2.amazonaws.com/
   

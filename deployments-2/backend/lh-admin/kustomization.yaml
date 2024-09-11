@@ -1,12 +1,12 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: stage-lh-admin
+namespace: stage-admin
 commonLabels:
   app: deploylhadmin
 resources:
-  - lh-admin-cm.yaml
-  - lh-admin-sec.yaml
-  - ../../../base/apps/backend/lh-admin
+  - admin-cm.yaml
+  - admin-sec.yaml
+  - ../../../base/apps/backend/admin
   - ingress-api.yaml
 patchesStrategicMerge:
   - deployment.yaml
@@ -18,18 +18,18 @@ patchesJson6902:
   patch: |-
     - op: replace
       path: /spec/template/spec/containers/0/name
-      value: deploylhadmin
+      value: deployadmin
 - target:
     version: v1
     kind: Ingress
-    name: ingresslhadmin
+    name: ingressadmin
   patch: |-
     - op: replace
       path: /spec/rules/0/host
-      value: staging-api.linear.health
+      value: staging-api.com
     - op: replace
       path: /spec/rules/0/http/paths/0/backend/service/name
-      value: servicelhadmin
+      value: serviceadmin
 images:
-- name: 052758603943.dkr.ecr.us-east-2.amazonaws.com/lh-admin-stage
+- name: iamge_url/admin-stage
   newTag: '1'

@@ -1,20 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: lh-practice-api-stage
+  name: practice-api-stage
   namespace: argocd
 spec:
-  project: linearhealth-stage
+  project: test-stage
   source:
-    repoURL: 'git@github.com:linear-health/Gitops.git'
-    path: deployments/api/lh-practice-api
+    repoURL: 'git@github.com:test/Gitops.git'
+    path: deployments/api/practice-api
     targetRevision: deploy-stage
     directory:
       recurse: false
       jsonnet: {}
   destination:
     namespace: stage-lh-practice-api
-    name: linearhealth-eks-stage
+    name: test-eks-stage
   syncPolicy:   
     syncOptions:
       - CreateNamespace=true

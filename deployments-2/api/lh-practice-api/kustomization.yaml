@@ -1,12 +1,12 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: stage-lh-practice-api
+namespace: stage-practice-api
 commonLabels:
-  app: deploylhpracticeapi
+  app: deploypracticeapi
 resources:
-  - lh-practice-cm.yaml
-  - lh-practice-sec.yaml
-  - ../../../base/apps/api/lh-practice-api
+  - practice-cm.yaml
+  - practice-sec.yaml
+  - ../../../base/apps/api/practice-api
   - hpa.yaml
   - ingress-api.yaml
 patchesStrategicMerge:
@@ -19,18 +19,18 @@ patchesJson6902:
   patch: |-
     - op: replace
       path: /spec/template/spec/containers/0/name
-      value: deploylhpracticeapi
+      value: deploypracticeapi
 - target:
     version: v1
     kind: Ingress
-    name: ingresslhpracticeapi
+    name: ingresspracticeapi
   patch: |-
     - op: replace
       path: /spec/rules/0/host
-      value: staging-api.linear.health
+      value: staging-api.com
     - op: replace
       path: /spec/rules/0/http/paths/0/backend/service/name
-      value: servicelhpracticeapi
+      value: servicepracticeapi
 images:
-- name: 052758603943.dkr.ecr.us-east-2.amazonaws.com/lh-practice-api-stage
+- name: image_url/practice-api-stage
   newTag: '1'

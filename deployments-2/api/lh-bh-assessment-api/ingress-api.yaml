@@ -17,6 +17,6 @@ spec:
            pathType: Prefix
            backend:
              service:
-              name: servicelhbhassessmentapi
+              name: servicebhassessmentapi
               port:
                 number: 80

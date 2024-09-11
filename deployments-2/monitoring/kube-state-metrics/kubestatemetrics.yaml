@@ -1,12 +1,12 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: lh-kubestatemetrics-stage
+  name: kubestatemetrics-stage
   namespace: argocd
 spec:
-  project: linearhealth-stage
+  project: test-stage
   source:
-    repoURL: 'git@github.com:linear-health/Gitops.git'
+    repoURL: 'git@github.com:test/Gitops.git'
     path: deployments/monitoring/kube-state-metrics
     targetRevision: deploy-stage
     directory:
@@ -14,7 +14,7 @@ spec:
       jsonnet: {}
   destination:
     namespace: monitoring
-    name: linearhealth-eks-stage
+    name: test-eks-stage
   syncPolicy:   
     syncOptions:
       - CreateNamespace=true

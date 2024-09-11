@@ -1,36 +1,6 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: lh-communication-env-cm
+  name: communication-env-cm
 data:
   API_PORT: '3001'
-  AWS_REGION: us-east-2
-  AWS_S3_BUCKET_NAME: lh-img 
-  AWS_S3_BUCKET_VOICE: lh-voice-dev
-  AWS_S3_CLOUDFRONT_URL: https://lh-img.s3.us-east-2.amazonaws.com/
-  DB_DIALECT: postgres
-  BEARER: Bearer
-  DB_HOST: lh-stage-rds.casu9wp7u42p.us-east-2.rds.amazonaws.com
-  DB_NAME_STAGING: lh-stage
-  DB_NAME_PRODUCTION: production_database_name
-  DB_NAME_DEVELOPMENT: lh-dev
-
-  DB_NAME_TEST: test_database_name
-  DB_PORT: '5432'
-  EMAIL_FROM_ADDRESS: projects.codelogicx@gmail.com
-  EMAIL_HOST: smtp.gmail.com
-  EMAIL_PORT: '465'
-  FRONTEND_URL: https://staging-staff.linear.health/
-  NODE_ENV: staging
-  OTP_EXPIRY_TIME: '15'
-  PATIENT_FRONTEND_URL: https://staging-patient.linear.health/
-  QUEUE_ENV: STAGE
-  SHORT_LINK_URL: https://msg.linear.health/
-  TOKEN_EXPIRATION: 48h
-  AWS_ROLE_ARN : arn:aws:iam::052758603943:role/lh-sqs-develop-role
-  AWS_STS_REGIONAL_ENDPOINTS : regional
-  AWS_DEFAULT_REGION : us-east-2
-  NEXT_PUBLIC_JWT_EXPIRATION: 5m
-  NEXT_PUBLIC_BASE_URL: https://staging-api.linear.health/admin-api
-  NEXT_IMAGE_BASE_URL: https://lh-img.s3.us-east-2.amazonaws.com/
-  

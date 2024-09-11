@@ -1,12 +1,12 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: stage-lh-communication-api
+namespace: stage-communication-api
 commonLabels:
-  app: deploylhpatientfrontend
+  app: deploypatientfrontend
 resources:
-  - lh-communication-cm.yaml
-  - lh-communication-sec.yaml
-  - ../../../base/apps/api/lh-communication-api
+  - communication-cm.yaml
+  - communication-sec.yaml
+  - ../../../base/apps/api/communication-api
   - hpa.yaml
   - ingress-api.yaml
 patchesStrategicMerge:

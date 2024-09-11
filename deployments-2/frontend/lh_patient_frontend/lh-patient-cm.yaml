@@ -1,15 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: lh-patient-env-cm
+  name: patient-env-cm
 data:
   PORT: '7050'
-  BASE_URL: https://staging-api.linear.health/patient-api/
-  COMMUNICATION_URL: https://staging-api.linear.health/communication-api/
-  BH_ASSESMENT_URL:  https://staging-api.linear.health/bh-assessment-api/
-  E_FORM_API_URL: https://staging-api.linear.health/eforms-api/
-  IMAGE_URL: https://lh-img.s3.us-east-2.amazonaws.com/
-  STAFF_URL: https://staging-staff.linear.health/
-  PUSHER_APP_CLUSTER: us2
-  
   

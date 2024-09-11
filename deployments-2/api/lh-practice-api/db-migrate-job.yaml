@@ -14,18 +14,6 @@ spec:
       - name: lhpracticeapi
         image: default
         command: ["npx", "sequelize-cli", "db:migrate", "--env", "development"]
-        envFrom:
-        - secretRef:
-           name: ${SECRET}
-        volumeMounts:
-        - mountPath: /lh-practice-api/database.sequelize-config.json
-          name: sequelize-config
-          subPath: database.sequelize-config.json
-
-      volumes:
-      - name: sequelize-config
-        secret:
-          secretName: sequelize-config
 
       restartPolicy: Never
   backoffLimit: 1

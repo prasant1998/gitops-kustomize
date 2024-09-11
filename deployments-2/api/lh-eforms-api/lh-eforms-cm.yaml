@@ -1,54 +1,6 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: lh-eforms-env-cm
+  name: eforms-env-cm
 data:
   API_PORT: '3001'
-  AWS_S3_BUCKET_NAME: lh-img  
-  AWS_S3_CLOUDFRONT_URL: https://lh-img.s3.us-east-2.amazonaws.com/
-  BEARER: Bearer
-  DB_DIALECT: postgres
-  DB_HOST: lh-stage-rds.casu9wp7u42p.us-east-2.rds.amazonaws.com
-  DB_NAME_STAGING: lh-stage
-  DB_NAME_DEVELOPMENT: lh-dev
-  DB_NAME_PRODUCTION: production_database_name
-  DB_NAME_TEST: test_database_name
- 
-  DB_PORT: '5432'
-  AWS_REGION : us-east-2
-
-  AWS_ROLE_ARN : arn:aws:iam::052758603943:role/lh-sqs-develop-role
-
-  AWS_DEFAULT_REGION : us-east-2
-
-  NODE_ENV: staging
-  PATIENT_FRONTEND_URL: https://staging-patient.linear.health/
-  QUEUE_ENV: STAGE
-  SHORT_LINK_URL: https://form.linear.health/
-
-  TOKEN_EXPIRATION: 24h
-
-  COMMUNICATION_API_URL: https://staging-api.linear.health/communication-api/
-  PATIENT_API_URL: https://staging-api.linear.health/patient-api/
-  PRACTICE_API_URL: https://staging-api.linear.health/practice-api/
-  FRONTEND_URL: https://staging-staff.linear.health/
-
-  AWS_STS_REGIONAL_ENDPOINTS : regional
-  AWS_WEB_IDENTITY_TOKEN_FILE : /var/run/secrets/eks.amazonaws.com/serviceaccount/token
-  AWS_ACCESS_KEY : AKIAQYSFINCTWNDGFF7F
-  
-  AWS_S3_BUCKET_VOICE : lh-voice-dev
-  
-  EMAIL_FROM_ADDRESS : projects.codelogicx@gmail.com
-  EMAIL_HOST : smtp.gmail.com
-  EMAIL_PORT : '465'
-  EMAIL_USER : projects.codelogicx@gmail.com
-  OTP_EXPIRY_TIME : '15'
-  TWILIO_API_KEY : SK74eaa95f8217abcf2efdbbfe45222ff4
-  TWILIO_API_SECRET : QRXXzWB9wyw4DHnx1AyPBSy9cnCgrb6r
-  TWILIO_FROM_NUMBER : '15125808136'
-  TWILIO_NUMBER_SID : PNb6035190c312c03dd3d3e5c1ab7f8de3
-  TWILIO_TWIML_APP_SID : AP2c52b45df90834a9365c95d26be11363
-  NEXT_PUBLIC_JWT_EXPIRATION: 5m
-  NEXT_PUBLIC_BASE_URL: https://staging-api.linear.health/admin-api
-  NEXT_IMAGE_BASE_URL: https://lh-img.s3.us-east-2.amazonaws.com/
